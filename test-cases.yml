@@ -5,7 +5,7 @@
   requirement: |
     У сайта должен быть механизм регистрации нового пользователя по email адресу
   prerequisites: |
-    Открыть страницу регистрации https://www.garmin.ru/mygarmin/account/?register=yes
+    Открыть страницу регистрации https://www.garmin.ru/mygarmin/account/
   test-data: |
     Nickname = example
     Email = example@gmail.com
@@ -27,7 +27,7 @@
   requirement: |
     У сайта должен быть механизм регистрации нового пользователя по email адресу 
   prerequisites: |
-    Открыть страницу регистрации https://www.garmin.ru/mygarmin/account/?register=yes
+    Открыть страницу регистрации https://www.garmin.ru/mygarmin/account/
   test-data: |
     Nickname = example
     Email = example@gmail.com
@@ -41,3 +41,38 @@
     - Нажать кнопку Submit
   expected-result: |
     Валидация полей ошибку о повторном вводе данных
+
+- summary: |
+    3. Проверка отправки данных кнопкой Submit
+  requirement: |
+    У сайта должен быть механизм регистрации нового пользователя по email адресу 
+  prerequisites: |
+    Открыть страницу регистрации https://www.garmin.ru/mygarmin/account/
+  test-data: |
+    Nickname = example
+    Email = example@gmail.com
+    Password = example
+    Password Confirmation = example
+  steps:
+    - Ввести данные в поля
+    - Нажать кнопку Submit
+  expected-result: |
+    Происходит успешная отправка Post запроса на сервер
+    Переход на страницу пользователя Garmid https://www.garmin.ru/personal/
+- summary: |
+    4. Проверка валидации полей
+  requirement: |
+    У сайта должен быть механизм регистрации нового пользователя по email адресу 
+  prerequisites: |
+    Открыть страницу регистрации https://www.garmin.ru/mygarmin/account/
+  test-data: |
+    Nickname = qqsdwrwfsd^%^
+    Email = qqsdwrwfsd^%^gmail.com
+    Password = Qwert
+    Password Confirmation = Qwert
+  steps:
+    - Ввести данные в поля
+    - Нажать кнопку Submit
+  expected-result: |
+    Валидация полей выдаст ошибки
+
