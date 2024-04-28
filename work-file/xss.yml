@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Поле для пароля</h2>
+
+<form>
+    <label for="login">Логин:</label><br>
+    <input type="text" id="login">
+    <br><br>
+    <label for="pass">Пароль:</label><br>
+    <input type="password" id="pass">
+<br><br>
+    <input type="submit" value="Отправить">
+</form>
+
+</body>
+</html>
