@@ -7,3 +7,5 @@ The project contains:
 Functional requirements
 ## test-cases.yml
 List of test cases for the developed requirements
+## test-report.yml
+Testing-report for the developed test cases
