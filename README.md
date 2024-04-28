@@ -5,3 +5,5 @@
 The project contains:
 ## requirements.md 
 Functional requirements
+## test-cases.yml
+List of test cases for the developed requirements
