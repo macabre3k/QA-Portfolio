@@ -1,0 +1,36 @@
+1. Получение списка всех продуктов Garmin:
+GET https://www.garmin.ru/api/products
+
+2. Получение информации о конкретном продукте по его ID:
+GET https://www.garmin.ru/api/products/product_id
+
+3. Создание нового заказа:
+POST https://www.garmin.ru/api/orders
+Body:
+{
+  "product_id": "12345",
+  "quantity": 1,
+  "delivery_method": "courier",
+  "payment_method": "credit_card",
+  "shipping_address": {
+    "street": "Gagarina St",
+    "city": "Moscow",
+    "country": "Russia"
+  }
+
+
+4. Получение информации о заказе по его ID:
+GET https://www.garmin.ru/api/orders/order_id
+
+5. Обновление информации о пользователе (данные профиля):
+PUT https://www.garmin.ru/api/user/profile
+Body:
+{
+  "name": "example",
+  "email": "qwerty@example.com",
+  "phone": "+79123456789",
+  "address": {
+    "street": "Gagarina St",
+    "city": "Saint Petersburg",
+    "country": "Russia"
+  }
