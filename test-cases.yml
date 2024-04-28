@@ -1,6 +1,6 @@
 # Страница регистрации
 
-- summary: |
+- summary: ||
     Проверка регистрации пользователя
   requirement: |
     У сайта должен быть механизм регистрации нового пользователя по email адресу
@@ -14,7 +14,6 @@
     Surname = example
     Name = example
     Surname = example
-
   steps:
     - Ввести данные в поля
     - Нажать кнопку Submit
@@ -22,7 +21,7 @@
     Происходит редирект на страницу личного кабинета https://www.garmin.ru/personal/
 
 
-- summary: |
+- summary: ||
     Проверка повторной регистрации пользователя
   requirement: |
     У сайта должен быть механизм регистрации нового пользователя по email адресу 
@@ -42,7 +41,7 @@
   expected-result: |
     Валидация полей ошибку о повторном вводе данных
 
-- summary: |
+- summary: ||
     3. Проверка отправки данных кнопкой Submit
   requirement: |
     У сайта должен быть механизм регистрации нового пользователя по email адресу 
@@ -59,7 +58,8 @@
   expected-result: |
     Происходит успешная отправка Post запроса на сервер
     Переход на страницу пользователя Garmid https://www.garmin.ru/personal/
-- summary: |
+    
+- summary: ||
     4. Проверка валидации полей
   requirement: |
     У сайта должен быть механизм регистрации нового пользователя по email адресу 
@@ -75,4 +75,107 @@
     - Нажать кнопку Submit
   expected-result: |
     Валидация полей выдаст ошибки
+111
+-  summary: ||
+    7. Неудачная валидация поля Email в форме регистрации
+   requirement: |
+    Все поля и формы должны проходить валидацию
+   prerequisites: |
+    Открыть страницу регистрации https://www.garmin.ru/mygarmin/account/?register=yes
+   test-data: |
+    Email = "eXaaam@ple@gqwm~aiL.CoOO m"
+   steps:
+    - Ввести данные в поле
+   expected-result: |
+    Валидация поля Email не пройдена
+
+- summary: ||
+    8. Успешная Валидация поля Email в форме регистрации
+  requirement: |
+    Все поля и формы должны проходить валидацию
+  prerequisites: |
+    Открыть страницу регистрации https://www.garmin.ru/mygarmin/account/?register=yes
+  test-data: |
+    Email = "example@example.com"
+  steps:
+    - Ввести данные в поле
+  expected-result: |
+    Валидация поля Email прошла успешна
+
+- summary: ||
+    9. Успешная Валидация поля Password в форме регистрации
+  requirement: |
+    Все поля и формы должны проходить валидацию
+  prerequisites: |
+    Открыть страницу регистрации https://www.garmin.ru/mygarmin/account/?register=yes
+  test-data: |
+    Password = "aqx12a~!$))p.<12"
+  steps:
+    - Ввести данные в поле
+  expected-result: |
+    Валидация поля Password прошла успешна
+    
+- summary: ||
+    10. Неудачная валидация поля Password в форме регистрации
+  requirement: |
+    Все поля и формы должны проходить валидацию
+  prerequisites: |
+    Открыть страницу регистрации https://www.garmin.ru/mygarmin/account/?register=yes
+  test-data: |
+    Password = "qwe~ggG!p:Q.e rr"
+    Password = "fifa"
+    Password = "aasw"
+  steps:
+    - Ввести данные в поле
+  expected-result: |
+    Валидация поля Password не прошла
+- summary: ||
+    11. Успешная Валидация поля Password Confirmation
+  requirement: |
+    Все поля и формы должны проходить валидацию
+  prerequisites: |
+    Открыть страницу регистрации https://www.garmin.ru/mygarmin/account/?register=yes
+  test-data: |
+    Password = "qwe-12?qqwd"
+    Password Confirmation = "1qwe-12?qqwd"
+  steps:
+    - Ввести данные в поле
+  expected-result: |
+    Валидация поля Password Confirmation прошла успешна
+
+- summary: ||
+    12. Неудачная валидация поля Password Confirmation
+  requirement: |
+    Все поля и формы должны проходить валидацию
+  prerequisites: |
+    Открыть страницу регистрации https://www.garmin.ru/mygarmin/account/?register=yes
+    Password = "123qweasd/123"
+    Password Confirmation = "123qweasd/123"
+    Password Confirmation = "fifa"
+  steps:
+    - Ввести данные в поле
+  expected-result: |
+    Валидация поля Password Confirmation не прошла 
+    
+- summary: ||
+    13. Проверка валидации полей в форме регистрации
+  requirement: |
+    Все поля и формы должны проходить валидацию
+  prerequisites: |
+    Открыть страницу регистрации https://www.garmin.ru/mygarmin/account/?register=yes
+  test-data: |
+    Nickname = arluhef 
+    Email = wrtun^gmail.com
+    Password = sdfsdlsdfsdlsdfsdlsdfsdlqweqweqweqweqwe
+    Password Confirmation = qweqweqwe
+  steps:
+    - Ввести данные в поля
+    - Нажать кнопку Submit
+  expected-result: |
+    Валидация полей выдаст ошибки
+
+    
+
+
+
 
