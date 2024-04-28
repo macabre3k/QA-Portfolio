@@ -1,7 +1,44 @@
-- summary: |
+- summary: ||
     1. Успешная регистрация пользователя через Email
   status: pass
   
-- summary: |
+- summary: ||
     2. Проверка недоступности повторной регистрации через Email
   status: pass
+
+ - summary: ||
+    3. Проверка отправки данных кнопкой Submit
+  status: pass
+   
+ - summary: ||
+    4. Проверка валидации полей
+  status: pass
+
+ - summary: ||
+    5. Неудачная валидация поля Email в форме регистрации
+  status: pass
+  
+- summary: ||
+    6. Успешная Валидация поля Email в форме регистрации
+  status: pass
+  
+- summary: ||
+    7. Успешная Валидация поля Password в форме регистрации
+  status: pass
+  
+- summary: ||
+    8. Неудачная валидация поля Password в форме регистрации
+  status: pass
+  
+- summary: ||
+    9. Успешная Валидация поля Password Confirmation
+  status: pass
+  
+- summary: ||
+    10. Неудачная валидация поля Password Confirmation
+  status: pass
+
+- summary: ||
+    11. Проверка валидации полей в форме регистрации
+  status: pass
+
