@@ -20,7 +20,6 @@
   expected-result: |
     Происходит редирект на страницу личного кабинета https://www.garmin.ru/personal/
 
-
 - summary: ||
     2. Проверка повторной регистрации пользователя
   requirement: |
@@ -129,6 +128,7 @@
     - Ввести данные в поле
   expected-result: |
     Валидация поля Password не прошла
+
 - summary: ||
     9. Успешная Валидация поля Password Confirmation
   requirement: |
@@ -174,6 +174,215 @@
   expected-result: |
     Валидация полей выдаст ошибки
 
+ - summary: ||
+    12. Успешное восстановление учетной записи
+   requirement: |
+    У сайта должен быть механизм восстановления учетной записи
+  prerequisites: |
+    Открыть страницу восстановления учетной записи https://www.garmin.ru/mygarmin/account/?forgot_password=yes
+  test-data: |
+    Email - example@gmail.com
+  steps:
+    - Ввести данные в поле
+    - Нажать кнопку Submit
+    - Авторизоваться в почтовый ящик example@gmail.com
+    - Перейти по ссылке востановления из входящего письма Garmin
+    - Ввести новый пароль
+    - Нажать кнопку Save
+    - Вернуться на открытую вкладку восстановления учетной записи
+    - Нажать на кнопку Sign in
+    - Авторизоваться в учетную запись
+  expected-result: |
+    Вывод сообщения "We have sent you an email with instructions on how to reset your password"
+    В почтовом ящике в папке входящие находится письмо от Garmin с кодом для сброса пароля 
+    Из открытой вкладки восстановления учетной записи переходим на страницу входа
+    Открывается страница https://www.garmin.ru/mygarmin/account/index.php?forgot_password=yes
+
+- summary: ||
+    13. Неудачная валидация поля Email на странице восстановления
+  requirement: |
+    У сайта должен быть механизм восстановления учетной записи
+  prerequisites: |
+    Открыть страницу восстановления учетной записи https://www.garmin.ru/mygarmin/account/?forgot_password=yes
+  test-data: |
+    Email = "wweeXawerm@ple@gm~aiwerL.Co mw"
+    Email - "fifa"
+    Email - "   "
+  steps:
+    - Ввести данные в поле поочередно
+    - Нажать кнопку Submit
+  expected-result: |
+    Валидация поля Email не прошла
+
+- summary: ||
+    14. Успешная валидация поля Email на странице восстановления
+  requirement: |
+    Все поля и формы должны проходить валидацию
+  prerequisites: |
+    Открыть страницу восстановления учетной записи https://www.garmin.ru/mygarmin/account/index.php?forgot_password=yes
+  test-data: |
+    Email = example@gmail.com
+  steps:
+    - Ввести данные в поле
+    - Нажать кнопку Submit
+  expected-result: |
+    Валидация поля Email прошла успешна
+
+- summary: ||
+    15. Проверка элементов макета на главной странице
+  requirement: |
+    Главная страница сайта должна содержать основную информацию о продукте с заголовком, кратким описанием, изображением и пр.
+  prerequisites: |
+    Открыть главную страницу https://www.garmin.ru
+  test-data: |
+    No data
+  steps:
+    - Проверить отображение заголовков, изображений, текстовых блоков
+  expected-result: |
+    Все элементы макета находятся на своих местах и корректно отображаются 
+ 
+ - summary: ||
+   16. Проверка работы корзины 
+  requirement: |
+    Пользователи должен иметь возможность добавлять товары в корзину
+  prerequisites: |
+    Авторизоваться в учетную запись
+    Зайти в свою учетную запись https://www.garmin.ru/mygarmin/account/
+  test-data: |
+    No data
+  steps:
+    - Добавить товар в корзину
+    - Удалить товар из корзины
+  expected-result: |
+    Товар добавляется и удаляется 
+
+- summary: ||
+    17. Открытие ссылок социальных сетей с главной страницы
+  requirement: |
+    Необходимо перейти на сайт магазина в Youtube и VK
+  prerequisites: |
+    Перейти по ссылкам 
+    VK https://vk.com/russiagarmin
+    YouTube https://www.youtube.com/user/NavicomRu/videos
+  test-data: |
+    No data
+  steps:
+    - Открыть ссылки - Youtube и VK
+  expected-result: | 
+    Происходит переход на страницы социальных сетей
+
+- summary: ||
+    18. Возможность приобрести товар в VK
+  requirement: |
+    Необходимо перейти в раздел товара и попробовать добавить его в  корзину
+  test-data: |
+    No data
+  steps:
+    - Перейти по ссылке https://vk.com/market-69537711?sort=2
+    - Добавить товар https://vk.com/cart69537711?ref_screen=market_item
+  expected-result: |
+    Происходит переход на страницу добавления товара 
+
+- summary: ||
+    19. Адаптивная верстка сайта
+  requirement: |
+    Сайт должен иметь адаптивную верстку
+  prerequisites: |
+    Открыть страницу каталога
+  test-data: 
+    No data |  
+  steps: 
+    - Открыть DevTools
+    - Открыть Toggle device toolbar
+    - Увеличивать/уменьшать ширину и длину макета
+  expected-result: |
+    Элементы сервиса не искажаются в размерах и качестве 
+    Элементы не дергаются при изменении макета
+    Дизайн и функционал не меняются на разных разрешениях
+    Основной контент дублируется на всех разрешениях
+
+- summary: ||
+   20. Проверка базовой безопасности
+  requirement: |
+    Сайт должен быть безопасным и защищать данные пользователя
+  prerequisites: |
+    Открыть Garmin по адресу https://www.garmin.ru
+  test-data: |
+    No data
+  steps:
+    - Открыть DevTools
+    - Открыть вкладку Security
+  expected-result: |
+    Соединение установлено по https
+    Сертификат актуален и верифицирован    
+
+- summary: |
+    21. Проверка работы на разных устройствах
+  requirement: |
+    Сайт должен быть доступен на различных устройствах
+  prerequisites: |
+    Открыть браузер Google Chrome на устройствах с системами Windows, Mac, IOS, Android, Linux 
+  test-data: |
+    No data
+  steps:
+    - Открыть Garmin
+    - Перейти в просмотр товара без регистрации 
+  expected-result: |
+    На всех устройствах дизайн и функционал Garmin работают корректно
+
+- summary: || 
+    22. Проверка кроссбраузерности
+  requirement: |
+    Сайт должен быть протестирован на совместимость с последними версиями браузеров
+  prerequisites: |
+    No data
+  test-data: |
+    No data
+  steps:
+    - Открыть Основной раздел Garmin без регистрации в браузерах с последними версиями    
+    - Google chrome
+    - Mozilla Firefox
+    - Safari
+    - Opera
+    - Microsoft Edge
+  expected-result: |
+    Во всех браузера корректно
+    - Открывается страница 
+    - Отображается верстка и дизайн
+    - Работает функционал
+
+- summary: ||
+    23. Проверка работы мобильной версии
+  requirement: |
+    Сайт должен быть удобным на мобильном устройстве
+  prerequisites: |
+    Открыть Garmin по адресу https://www.garmin.ru
+  test-data: |
+    No data
+  steps:
+    - Открыть Devtools
+    - Открыть Toggle device toolbar
+    - Открыть любые 3 мобильных устройства из опции Dimensions
+  expected-result: |
+    На всех разрешениях макет сайта расположен органично 
+    Блоки макета находятся в своих границах и на своих местах. 
+
+- summary: ||
+    24. Проверка скорости загрузки сайта
+  requirement: |
+    Сайт должен быть оптимизирован для скорости работы
+  prerequisites: |
+    Открыть сервис https://pagespeed.web.dev/
+  test-data: |
+    No data
+  steps:
+    - Вставить ссылку Garmin в поле PageSpeed
+    - Запустить проверку
+  expected-result: |
+    Показатели проверки должны соответствовать результату от 85 до 100 баллов
+    
+
+    
     
 
 
